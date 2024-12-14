@@ -1,27 +1,30 @@
 # Kurento.NET
-kurento 客户端 C#实现
-# 关于 Kurento
-Kurento is an open source software project providing a platform suitable for creating modular applications with advanced real-time communication capabilities. For knowing more about Kurento, please visit the Kurento project website: https://www.kurento.org.
-# 项目结构
+Kurento client C# implementation
+
+# About Kurento
+Kurento is an open source software project providing a platform suitable for creating modular applications with advanced real-time communication capabilities. For more information about Kurento, please visit the Kurento project website: https://www.kurento.org.
+
+# Project Structure
 
 + KMSCreator
-   + 根据kurento 提供的 kms-core，kms-elements，kms-filters 生成C# 的Kurento客户端
+   + Generates the C# Kurento client based on the kurento provided kms-core, kms-elements, kms-filters
 + Kurento.NET
-   + kurento的C# 客户端库
+   + C# client library for kurento
 + KurentoDemo
-   + 几个简单的使用kurento 的列子
+   + Several simple examples of using kurento
 
-# 如何使用
+# How to Use
 
-1. NuGet 引用
+1. NuGet Reference
    > ```Install-Package Kurento.NET```
-2. 使用
+2. Usage
  ```
     var client = new KurentoClient("ws://your kurento ip:8888/kurento", logger);
     var pipeline = client.Create(new MediaPipeline());
     var webRtcEndPoint = client.Create(new WebRtcEndpoint(pipeline));
 ```
 
-# 实例
 
-[简单的多对多列子](https://github.com/oBears/KurentoDemo)
+# Examples
+
+[Simple multi-party example](https://github.com/oBears/KurentoDemo)

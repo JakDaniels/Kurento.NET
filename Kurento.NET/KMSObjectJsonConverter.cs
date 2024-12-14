@@ -21,7 +21,7 @@ namespace Kurento.NET
                 obj.id = id;
                 return obj;
             }
-            throw new Exception("KMSObject转换出错");
+            throw new Exception("KMSObject conversion error");
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

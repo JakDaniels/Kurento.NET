@@ -58,7 +58,7 @@ namespace Kurento.NET
                 //停止接受消息
                 resetEvent.Reset();
                 tryCount++;
-                _logger.LogError(ex, $"{ex.Message},尝试重连次数{tryCount}");
+                _logger.LogError(ex, $"{ex.Message}, attempt to reconnect count {tryCount}");
 
             }
         }
@@ -69,7 +69,7 @@ namespace Kurento.NET
                 if (clientWebSocket.State == WebSocketState.Open)
                 {
                     var buffer = new byte[1024 * 4];
-                    //接收到消息
+                    // Message received
                     var r = await clientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
                     var content = new StringBuilder();
                     while (r.MessageType != WebSocketMessageType.Close && r.MessageType == WebSocketMessageType.Text)
@@ -80,7 +80,7 @@ namespace Kurento.NET
                             OnMessage(content.ToString());
                             content.Clear();
                         }
-                        //没接收完继续接受
+                        // Continue receiving if not finished
                         r = await clientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer, 0, r.Count), CancellationToken.None);
                     }
                     await clientWebSocket.CloseAsync(r.CloseStatus.Value, r.CloseStatusDescription, CancellationToken.None);
